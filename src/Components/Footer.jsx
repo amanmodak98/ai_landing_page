@@ -9,6 +9,7 @@ const Footer = () => {
         <p className="caption text-n-4 lg:block">
           © {new Date().getFullYear()}. All rights reserved.
         </p>
+        <p className="caption text-n-4 lg:block">Designed &amp; Developed by <a href="https://www.infirexa.tech" target="_blank" rel="noopener noreferrer">Infirexa</a></p>
 
         <ul className="flex gap-5 flex-wrap">
           {socials.map((item) => (
