@@ -1,29 +1,20 @@
-import Benifits from "./Components/Benifits";
-import Button from "./Components/Button";
-import Collabration from "./Components/Collabration";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-import Hero from "./Components/Hero";
-import Pricing from "./Components/Pricing";
-import Roadmap from "./Components/Roadmap";
-import Services from "./Components/Services";
-import ButtonGradient from "./assets/svg/ButtonGradient";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Footer from './Components/Footer'
+import HomePage from './pages/HomePage'
+import PricingPage from './pages/PricingPage'
+import RoadmapPage from './pages/RoadmapPage'
+
 function App() {
   return (
-    <>
-      <div className="overflow-hidden ">
-        <Header />
-        <Hero />
-        <Benifits />
-        <Collabration />
-        <Services />
-        <Pricing />
-        <Roadmap />
-        <Footer />
-      </div>
-      <ButtonGradient />
-    </>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/roadmap" element={<RoadmapPage />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
