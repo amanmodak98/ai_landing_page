@@ -1,0 +1,397 @@
+/**
+ * Typography System - Fluid & Responsive
+ * World-class typography with proper hierarchy, readability, and accessibility
+ */
+
+/* ============================================
+   FLUID TYPOGRAPHY SCALE
+   Responsive scaling using clamp()
+   ============================================ */
+
+:root {
+  /* Base font size for calculations */
+  --font-size-base: 1rem; /* 16px */
+
+  /* Fluid type scale - scales between mobile and desktop */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);        /* 12-14px */
+  --font-size-sm: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);         /* 14-16px */
+  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);        /* 16-18px */
+  --font-size-md: clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem);      /* 18-20px */
+  --font-size-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);          /* 20-24px */
+  --font-size-xl: clamp(1.5rem, 1.35rem + 0.75vw, 1.875rem);        /* 24-30px */
+  --font-size-2xl: clamp(1.875rem, 1.65rem + 1.125vw, 2.25rem);     /* 30-36px */
+  --font-size-3xl: clamp(2.25rem, 1.95rem + 1.5vw, 3rem);           /* 36-48px */
+  --font-size-4xl: clamp(3rem, 2.5rem + 2.5vw, 3.75rem);            /* 48-60px */
+  --font-size-5xl: clamp(3.75rem, 3rem + 3.75vw, 4.5rem);           /* 60-72px */
+  --font-size-6xl: clamp(4.5rem, 3.5rem + 5vw, 6rem);               /* 72-96px */
+
+  /* Display sizes for hero sections */
+  --font-size-display-sm: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --font-size-display-md: clamp(4rem, 3rem + 5vw, 5.5rem);
+  --font-size-display-lg: clamp(5.5rem, 4rem + 7.5vw, 7rem);
+}
+
+/* ============================================
+   FONT FAMILY SYSTEM
+   ============================================ */
+
+:root {
+  /* Primary font stack - optimized fallbacks */
+  --font-display: 'Space Grotesk', 'Space Grotesk Fallback', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', Courier, monospace;
+}
+
+/* Fallback fonts for FOUT prevention */
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  src: local('Arial');
+  size-adjust: 105%;
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* ============================================
+   HEADING STYLES
+   Semantic hierarchy with proper sizing
+   ============================================ */
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* H1 - Main page title */
+h1, .h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* H2 - Section headings */
+h2, .h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+/* H3 - Subsection headings */
+h3, .h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* H4 - Card/Component headings */
+h4, .h4 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+/* H5 - Small headings */
+h5, .h5 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+/* H6 - Micro headings */
+h6, .h6 {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+/* ============================================
+   DISPLAY HEADINGS - Hero sections
+   ============================================ */
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-lg);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-md);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.display-sm {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-sm);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+/* ============================================
+   BODY TEXT STYLES
+   ============================================ */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Body text variants */
+.body-1 {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-regular);
+}
+
+.body-2 {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-light);
+}
+
+.body-sm {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.body-xs {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+}
+
+/* Lead paragraph - larger introductory text */
+.lead {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   SPECIALIZED TEXT STYLES
+   ============================================ */
+
+/* Tagline - uppercase labels */
+.tagline {
+  font-family: var(--font-display);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* Quote text */
+.quote {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+  font-weight: var(--font-weight-regular);
+}
+
+/* Code text */
+code, .code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  font-weight: var(--font-weight-medium);
+  background: var(--bg-tertiary);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-sm);
+  border: var(--border-width-thin) solid var(--border-secondary);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+/* Button text */
+.button-text {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+}
+
+/* Caption text */
+.caption {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-tertiary);
+}
+
+/* ============================================
+   TEXT UTILITIES
+   ============================================ */
+
+/* Font weights */
+.font-light { font-weight: var(--font-weight-light); }
+.font-regular { font-weight: var(--font-weight-regular); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* Text alignment */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* Text colors */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-inverse { color: var(--text-inverse); }
+
+/* Text transform */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+
+/* ============================================
+   READING EXPERIENCE OPTIMIZATION
+   ============================================ */
+
+/* Optimal line length for readability */
+.prose {
+  max-width: 65ch; /* ~65 characters per line */
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.prose-sm {
+  max-width: 60ch;
+  font-size: var(--font-size-sm);
+}
+
+.prose-lg {
+  max-width: 70ch;
+  font-size: var(--font-size-lg);
+}
+
+/* Text balance - prevent orphans */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Text pretty - better line breaks */
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* ============================================
+   OPENTYPE FEATURES
+   Enhanced typography with font features
+   ============================================ */
+
+.font-feature-all {
+  font-feature-settings:
+    'liga' 1,  /* Ligatures */
+    'calt' 1,  /* Contextual alternates */
+    'kern' 1,  /* Kerning */
+    'tnum' 1,  /* Tabular numbers */
+    'case' 1;  /* Case-sensitive forms */
+}
+
+.font-feature-numbers {
+  font-feature-settings:
+    'tnum' 1,  /* Tabular numbers */
+    'zero' 1;  /* Slashed zero */
+}
+
+/* ============================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================ */
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  body {
+    font-weight: var(--font-weight-medium);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 640px) {
+  body {
+    /* Slightly smaller base size on mobile */
+    font-size: clamp(0.9375rem, 0.875rem + 0.25vw, 1rem);
+  }
+}
+
+@media (min-width: 1920px) {
+  /* Cap maximum sizes on very large screens */
+  :root {
+    --font-size-display-lg: 7rem;
+    --font-size-6xl: 6rem;
+  }
+}

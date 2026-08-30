@@ -5,7 +5,9 @@ export default function RoadmapPage() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <Roadmap />
+      <main role="main">
+        <Roadmap />
+      </main>
     </div>
   )
 }

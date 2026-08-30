@@ -1,25 +1,174 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
+/* ============================================
+   OPTIMIZED FONT LOADING
+   Using variable fonts with font-display: swap
+   ============================================ */
+
+/* Inter Variable - Primary Body Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap');
+
+/* Space Grotesk Variable - Display/Heading Font */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+/* JetBrains Mono - Code/Monospace Font */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ============================================
+   DESIGN SYSTEM IMPORTS
+   Order matters: tokens → typography → accessibility → components
+   ============================================ */
+
+@import './styles/design-tokens.css';
+@import './styles/typography.css';
+@import './styles/accessibility.css';
+@import './styles/components.css';
+
+/* ============================================
+   TAILWIND BASE
+   ============================================ */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   CSS CUSTOM PROPERTIES
+   ============================================ */
+
 :root {
-  --font-sora: "Sora", sans-serif;
-  --font-code: "Source Code Pro", monospace;
-  --font-grotesk: "Space Grotesk", sans-serif;
+  /* Font Families - Updated for new system */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Legacy font variables for backwards compatibility */
+  --font-inter: var(--font-body);
+  --font-syne: var(--font-display);
+  --font-grotesk: var(--font-display);
+  --font-sora: var(--font-body);
+  --font-code: var(--font-mono);
+
+  /* Color scheme preference */
   color-scheme: dark;
 }
 
+/* ============================================
+   GLOBAL RESETS & BASE STYLES
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 * {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Smooth scroll with reduced motion support */
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ============================================
+   BASE LAYER STYLES
+   ============================================ */
+
 @layer base {
   body {
-    @apply font-sans bg-n-8 text-n-1 text-base;
+    /* Tailwind utilities */
+    @apply font-sans bg-n-8 text-n-1;
+
+    /* Design token values */
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+
+    /* Font rendering optimization */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+
+    /* Prevent horizontal overflow */
+    overflow-x: hidden;
+
+    /* Better text wrapping */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Heading defaults - detailed styles in typography.css */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--text-primary);
+  }
+
+  /* Code and preformatted text */
+  code, pre {
+    font-family: var(--font-mono);
+  }
+
+  /* Paragraph spacing */
+  p {
+    margin-bottom: 0;
+  }
+
+  /* Link defaults */
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  a:hover {
+    color: var(--color-primary-hover);
+  }
+
+  /* Image optimization */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Form elements */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Remove default button styles */
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* List reset */
+  ul,
+  ol {
+    list-style: none;
   }
 }
 
@@ -85,4 +234,246 @@
 
 .-rotate-360 {
   @apply rotate-[-360deg];
+}
+
+/* ============================================
+   GRADIENT TEXT UTILITIES
+   ============================================ */
+
+@layer utilities {
+  .gradient-text {
+    background: var(--gradient-blue-purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-cyan-blue {
+    background: var(--gradient-cyan-blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-purple-magenta {
+    background: var(--gradient-purple-magenta);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-multi {
+    background: var(--gradient-multi);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ============================================
+     GLOW EFFECTS
+     ============================================ */
+
+  .glow-blue {
+    box-shadow: var(--glow-blue);
+  }
+
+  .glow-purple {
+    box-shadow: var(--glow-purple);
+  }
+
+  .glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+
+  .glow-magenta {
+    box-shadow: var(--glow-magenta);
+  }
+
+  .text-glow-blue {
+    text-shadow: var(--glow-blue);
+  }
+
+  .text-glow-purple {
+    text-shadow: var(--glow-purple);
+  }
+
+  .text-glow-cyan {
+    text-shadow: var(--glow-cyan);
+  }
+
+  .text-glow-magenta {
+    text-shadow: var(--glow-magenta);
+  }
+
+  /* ============================================
+     GRADIENT BACKGROUNDS
+     ============================================ */
+
+  .bg-gradient-blue-purple {
+    background: var(--gradient-blue-purple);
+  }
+
+  .bg-gradient-cyan-blue {
+    background: var(--gradient-cyan-blue);
+  }
+
+  .bg-gradient-purple-magenta {
+    background: var(--gradient-purple-magenta);
+  }
+
+  .bg-gradient-multi {
+    background: var(--gradient-multi);
+  }
+
+  .bg-gradient-mesh-1 {
+    background: var(--bg-primary);
+    position: relative;
+  }
+
+  .bg-gradient-mesh-1::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-mesh-1);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .bg-gradient-mesh-2 {
+    background: var(--bg-primary);
+    position: relative;
+  }
+
+  .bg-gradient-mesh-2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-mesh-2);
+    pointer-events: none;
+  }
+
+  /* ============================================
+     GLASSMORPHISM EFFECTS
+     ============================================ */
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: var(--backdrop-blur-md);
+    border: var(--border-width-thin) solid var(--border-primary);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--backdrop-blur-lg);
+    border: var(--border-width-thin) solid var(--border-primary);
+  }
+
+  /* ============================================
+     ANIMATED BORDER GRADIENTS
+     ============================================ */
+
+  .border-gradient {
+    position: relative;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+  }
+
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: var(--gradient-blue-purple);
+    border-radius: var(--radius-lg);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* ============================================
+     SMOOTH ANIMATIONS
+     ============================================ */
+
+  .transition-fast {
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .transition-normal {
+    transition: all var(--duration-normal) var(--ease-in-out);
+  }
+
+  .transition-moderate {
+    transition: all var(--duration-moderate) var(--ease-sharp);
+  }
+
+  .hover-lift {
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .hover-glow-blue:hover {
+    box-shadow: var(--glow-blue);
+    transition: box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .hover-glow-purple:hover {
+    box-shadow: var(--glow-purple);
+    transition: box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  /* ============================================
+     MODERN CARD STYLES
+     ============================================ */
+
+  .card-modern {
+    background: var(--bg-secondary);
+    border: var(--border-width-thin) solid var(--border-primary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .card-modern:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  /* ============================================
+     SCROLLBAR STYLING
+     ============================================ */
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-neutral-700);
+    border-radius: var(--radius-full);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-neutral-600);
+  }
+
+  /* ============================================
+     SELECTION STYLING
+     ============================================ */
+
+  ::selection {
+    background: var(--color-blue-500);
+    color: var(--text-primary);
+  }
+
+  ::-moz-selection {
+    background: var(--color-blue-500);
+    color: var(--text-primary);
+  }
 }

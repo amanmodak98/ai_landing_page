@@ -5,7 +5,9 @@ export default function PricingPage() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <Pricing />
+      <main role="main">
+        <Pricing />
+      </main>
     </div>
   )
 }

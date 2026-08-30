@@ -10,10 +10,12 @@ export default function HomePage() {
     <>
       <div className="overflow-hidden">
         <Header />
-        <Hero />
-        <Benifits />
-        <Collabration />
-        <Services />
+        <main role="main">
+          <Hero />
+          <Benifits />
+          <Collabration />
+          <Services />
+        </main>
       </div>
       <ButtonGradient />
     </>

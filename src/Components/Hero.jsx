@@ -8,8 +8,9 @@ import { ScrollParallax } from "react-just-parallax";
 import GeneratingText from "./GeneratingText";
 import Notification from "./Notification";
 import CompanyLogos from "./CompanyLogos";
+
 export default function Hero() {
-  const parallexRef = useRef();
+  const parallaxRef = useRef();
 
   return (
     <Section
@@ -19,18 +20,19 @@ export default function Hero() {
       crossesOffset="lg:translate-y-[5.2rem]"
       id="hero"
     >
-      <div className="container relative" ref={parallexRef}>
+      <div className="container relative" ref={parallaxRef} id="main-content">
         <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[4rem] md:mb-20 lg:mb:[6rem]">
           <h1 className="h1 mb-6">
-            Explore the Possibilities of AI Chatting with
+            Explore the Possibilities of AI Chatting with{" "}
             <span className="inline-block relative">
               Brainwave
               <img
                 className="absolute top-full left-0 w-full xl:-mt-2"
                 src={curve}
-                alt="curve"
+                alt=""
                 width={624}
                 height={24}
+                aria-hidden="true"
               />
             </span>
           </h1>
@@ -40,13 +42,15 @@ export default function Hero() {
             with Brainwave, the open AI chat app.
           </p>
 
-          <Button white>Get Started</Button>
+          <Button white aria-label="Get started with Brainwave">
+            Get Started
+          </Button>
         </div>
 
         <div className="relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24">
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
             <div className="relative bg-n-8 rounded-[1rem]">
-              <div className="h-[1.4rem] bg-n-10 rounded-t-[0.9rem]" />
+              <div className="h-[1.4rem] bg-n-10 rounded-t-[0.9rem]" aria-hidden="true" />
 
               <div className="aspect-[33/40] rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490]">
                 <img
@@ -54,20 +58,28 @@ export default function Hero() {
                   className="w-full scale-[1.7] translate-y-[8%] md:scale-[1] md:-translate-y-[10%] lg:-translate-y-[23%]"
                   width={1024}
                   height={490}
-                  alt="AI"
+                  alt="AI-powered robot interface showcasing Brainwave's capabilities"
                 />
 
                 <GeneratingText
                   className={
-                    "absolute left-4 right-4 bottom-[1.2rem] md:left-1/2 md:right-auto md:botom-8  md:w-[31rem] md:-translate-x-1/2 "
+                    "absolute left-4 right-4 bottom-[1.2rem] md:left-1/2 md:right-auto md:bottom-8 md:w-[31rem] md:-translate-x-1/2"
                   }
                 />
 
                 <ScrollParallax isAbsolutelyPositioned>
-                  <ul className="hidden absolute -left-[4.5rem] bottom-[7.5rem] backdrop-blur-border  px-1 py-1 bg-n-9/40 border border-n-1/20 rounded-2xl lg:flex ">
-                    {heroIcons.map((icon) => (
-                      <li className="p-5 ">
-                        <img src={icon} alt="icon" width={24} height={25} />
+                  <ul
+                    className="hidden absolute -left-[4.5rem] bottom-[7.5rem] backdrop-blur-border px-1 py-1 bg-n-9/40 border border-n-1/20 rounded-2xl lg:flex"
+                    aria-label="Featured integrations"
+                  >
+                    {heroIcons.map((icon, index) => (
+                      <li className="p-5" key={index}>
+                        <img
+                          src={icon}
+                          alt={`Integration icon ${index + 1}`}
+                          width={24}
+                          height={25}
+                        />
                       </li>
                     ))}
                   </ul>
@@ -83,13 +95,16 @@ export default function Hero() {
 
             <Gradient />
           </div>
-          <div className="absolute -top-[54%] left-1/2 w-[234%] -translate-x-1/2 md:-top-[46%] md:w-[138%] lg:-top-[104%]">
+          <div
+            className="absolute -top-[54%] left-1/2 w-[234%] -translate-x-1/2 md:-top-[46%] md:w-[138%] lg:-top-[104%]"
+            aria-hidden="true"
+          >
             <img
               src={heroBackground}
-              className="w-full "
+              className="w-full"
               width={1440}
               height={1800}
-              alt="hero"
+              alt=""
             />
           </div>
 
