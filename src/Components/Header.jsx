@@ -44,6 +44,7 @@ export default function Header() {
           </a>
 
           <nav
+            id="mobile-menu"
             className={`${
               openNavigation ? "flex" : "hidden"
             } fixed top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}
@@ -85,9 +86,9 @@ export default function Header() {
           <Button
             onClick={toggleNavigation}
             className={"ml-auto px-3 lg:hidden"}
-            aria-label={openNavigation ? "Close menu" : "Open menu"}
+            aria-label="Toggle menu"
             aria-expanded={openNavigation}
-            aria-controls="main-navigation"
+            aria-controls="mobile-menu"
           >
             <Menu openNavigation={openNavigation} />
           </Button>
